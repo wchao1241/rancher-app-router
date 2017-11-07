@@ -1,0 +1,11 @@
+. {
+    etcd rancher.local {
+        stubzones
+        path /rdns
+        endpoint http://localhost:2379
+        upstream 8.8.8.8:53 8.8.4.4:53
+    }
+    cache 160 rancher.local
+    loadbalance
+    proxy . 8.8.8.8:53 8.8.4.4:53
+}

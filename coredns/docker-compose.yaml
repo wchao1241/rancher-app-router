@@ -1,0 +1,54 @@
+version: '2'
+
+services:
+  etcd:
+    image: niusmallnan/coreos-etcd:v3.2.9
+    volumes:
+    - /tmp/etcd-data.tmp:/etcd-data
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-file: '2'
+        max-size: 25m
+    ports:
+    - "2379:2379"
+    - "2380:2380"
+    command:
+    - /usr/local/bin/etcd
+    - --name
+    - localtest
+    - --data-dir
+    - /etcd-data
+    - --listen-client-urls
+    - http://0.0.0.0:2379
+    - --advertise-client-urls
+    - http://0.0.0.0:2379
+    - --listen-peer-urls
+    - http://0.0.0.0:2380
+    - --initial-advertise-peer-urls
+    - http://0.0.0.0:2380
+    - --initial-cluster
+    - localtest=http://0.0.0.0:2380
+    - --initial-cluster-token
+    - localtest-tkn
+    - --initial-cluster-state
+    - new
+
+  coredns:
+    image: coredns/coredns:0.9.10
+    network_mode: host
+    volumes:
+    - ./corefile:/etc/corefile
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-file: '2'
+        max-size: 25m
+    command:
+    - -conf
+    - /etc/corefile
+    - -dns.port
+    - "53"
+
