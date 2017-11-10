@@ -1,10 +1,13 @@
 . {
-    etcd rancher.local {
+    etcd w.rancher.local {
         path /rdns
         endpoint http://localhost:2379
         upstream 8.8.8.8:53 8.8.4.4:53
+        wildcardbound 4
     }
     cache 160 rancher.local
     loadbalance
     proxy . 8.8.8.8:53 8.8.4.4:53
+    log stdout
+    errors
 }

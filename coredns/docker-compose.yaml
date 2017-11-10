@@ -36,7 +36,7 @@ services:
     - new
 
   coredns:
-    image: coredns/coredns:0.9.10
+    image: niusmallnan/coredns:0.9.10-rancher
     network_mode: host
     volumes:
     - ./corefile:/etc/corefile
