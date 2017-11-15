@@ -1,0 +1,39 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: kube-rdns
+  namespace: kube-rdns
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: kube-rdns
+    spec:
+      containers:
+      - name: kube-rdns
+        image: niusmallnan/kube-rdnso:0.1.0-alpha
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9595
+        env:
+        - name: RANCHER_ROOT_DOMAIN
+          valueFrom:
+            configMapKeyRef:
+              name: kube-rdns
+              key: rdns.root_domain
+        - name: RANCHER_BASE_RDNS_URL
+          valueFrom:
+            configMapKeyRef:
+              name: kube-rdns
+              key: rdns.base_url
+        - name: RANCHER_RENEW_DURATION
+            configMapKeyRef:
+              name: kube-rdns
+              key: rdns.renew_duration
+        readinessProbe:
+          httpGet:
+            path: /healthcheck
+            port: 9595
+          initialDelaySeconds: 5
+          timeoutSeconds: 1
