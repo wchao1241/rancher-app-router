@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
       - name: kube-rdns
-        image: niusmallnan/kube-rdnso:0.1.0-alpha
+        image: niusmallnan/kube-rdns:v0.1.0-alpha
         imagePullPolicy: Always
         ports:
         - containerPort: 9595
