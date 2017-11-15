@@ -1,0 +1,9 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cluster-info
+  namespace: kube-system
+  labels:
+    app: cluster-info
+data:
+  cluster-id: "niusmallnan_test"

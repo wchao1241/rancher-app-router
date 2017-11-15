@@ -29,6 +29,7 @@ spec:
               name: kube-rdns
               key: rdns.base_url
         - name: RANCHER_RENEW_DURATION
+          valueFrom:
             configMapKeyRef:
               name: kube-rdns
               key: rdns.renew_duration

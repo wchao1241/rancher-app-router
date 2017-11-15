@@ -84,5 +84,5 @@ roleRef:
   name: kube-rdns-clusterrole
 subjects:
   - kind: ServiceAccount
-    name: kube-rdns--serviceaccount
+    name: kube-rdns-serviceaccount
     namespace: kube-rdns
