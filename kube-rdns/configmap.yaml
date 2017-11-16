@@ -4,7 +4,8 @@ metadata:
   name: kube-rdns
   namespace: kube-rdns
 data:
-  rdns.root_domain: "rancher.io"
+  rdns.root_domain: "w.rancher.io"
   rdns.base_url: "https://api.rdns.rancher.io/v1"
+  # such as "300ms", "1.5h" or "2h45m". Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h".
   rdns.renew_duration: "24h"
   rdns.debug: "true"
