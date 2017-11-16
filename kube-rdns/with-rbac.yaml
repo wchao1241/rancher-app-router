@@ -18,6 +18,11 @@ spec:
         ports:
         - containerPort: 9595
         env:
+        - name: RANCHER_DEBUG
+          valueFrom:
+            configMapKeyRef:
+              name: kube-rdns
+              key: rdns.debug
         - name: RANCHER_ROOT_DOMAIN
           valueFrom:
             configMapKeyRef:

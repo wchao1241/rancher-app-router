@@ -7,3 +7,4 @@ data:
   rdns.root_domain: "rancher.io"
   rdns.base_url: "https://api.rdns.rancher.io/v1"
   rdns.renew_duration: "24h"
+  rdns.debug: "true"
