@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: simplelb-with-hostname
   annotations:
-    rdns.rancher.io/hostname: 'ccc.default.niusmallnan_test.rancher.local'
+    rdns.rancher.io/hostname: 'ccc.default.niusmallnan_test.w.rancher.local'
 spec:
   backend:
     serviceName: nginx-service-with-hostname
