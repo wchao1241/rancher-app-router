@@ -32,6 +32,7 @@ rules:
     verbs:
       - get
       - list
+      - update
       - watch
   - apiGroups:
       - "extensions"
@@ -42,12 +43,6 @@ rules:
       - get
       - list
       - watch
-  - apiGroups:
-      - "extensions"
-    resources:
-      - ingresses/status
-    verbs:
-      - update
 
 ---
 
