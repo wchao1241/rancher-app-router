@@ -17,6 +17,7 @@ spec:
       annotations:
         prometheus.io/port: '10254'
         prometheus.io/scrape: 'true'
+        rdns.rancher.io/managed: 'true'
     spec:
       containers:
         - name: nginx-ingress-controller
