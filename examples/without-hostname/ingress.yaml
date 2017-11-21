@@ -4,7 +4,7 @@ metadata:
   name: simplelb-without-hostname
 spec:
   rules:
-  - host: simplelb-without-hostname.default.niusmallnan-test.w.rancher.local
+  - host: simplelb-without-hostname.default.zzb88678.w.niusmallnan.com
     http:
       paths:
       - path: /xxx
