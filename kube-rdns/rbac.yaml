@@ -15,6 +15,7 @@ rules:
       - ""
     resources:
       - configmaps
+      - nodes
     verbs:
       - get
   - apiGroups:
