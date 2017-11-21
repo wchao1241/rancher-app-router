@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: simplelb-tls-without-hostname
+spec:
+  tls:
+  - hosts:
+    - simplelb-tls-without-hostname.default.niusmallnan-test.w.rancher.local
+    secretName: simplelb-tls-without-hostname
+  rules:
+  - host: simplelb-tls-without-hostname.default.niusmallnan-test.w.rancher.local
+    http:
+      paths:
+      - path: /xxx
+        backend:
+          serviceName: echoheaders-without-hostname
+          servicePort: 80
+      - path: /yyy
+        backend:
+          serviceName: echoheaders-without-hostname
+          servicePort: 80
