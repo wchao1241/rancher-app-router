@@ -3,8 +3,17 @@ kind: Ingress
 metadata:
   name: simplelb-with-hostname
   annotations:
-    rdns.rancher.io/hostname: 'ccc.default.niusmallnan_test.w.rancher.local'
+    rdns.rancher.io/hostname: 'foo.bar.com'
 spec:
-  backend:
-    serviceName: nginx-service-with-hostname
-    servicePort: 90
+  rules:
+  - host: foo.bar.com
+    http:
+      paths:
+      - path: /bar
+        backend:
+          serviceName: echoheaders-with-hostname
+          servicePort: 80
+      - path: /foo
+        backend:
+          serviceName: echoheaders-with-hostname
+          servicePort: 80

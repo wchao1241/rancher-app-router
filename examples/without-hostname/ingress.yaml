@@ -3,6 +3,15 @@ kind: Ingress
 metadata:
   name: simplelb-without-hostname
 spec:
-  backend:
-    serviceName: nginx-service-without-hostname
-    servicePort: 90
+  rules:
+  - host: simplelb-without-hostname.default.niusmallnan-test.w.rancher.local
+    http:
+      paths:
+      - path: /xxx
+        backend:
+          serviceName: echoheaders-without-hostname
+          servicePort: 80
+      - path: /yyy
+        backend:
+          serviceName: echoheaders-without-hostname
+          servicePort: 80
