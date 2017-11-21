@@ -19,6 +19,7 @@ spec:
         prometheus.io/scrape: 'true'
         rdns.rancher.io/managed: 'true'
     spec:
+      hostNetwork: true
       serviceAccountName: nginx-ingress-serviceaccount
       containers:
         - name: nginx-ingress-controller
