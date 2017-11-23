@@ -4,6 +4,7 @@ metadata:
   name: simplelb-with-hostname
   annotations:
     rdns.rancher.io/hostname: 'foo.bar.com'
+    kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
   - host: foo.bar.com
