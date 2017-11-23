@@ -1,0 +1,14 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: alb-configuration
+  namespace: ingress-alb
+  labels:
+    app: ingress-alb
+data:
+  aws_region: "us-west-2"
+  cluster_name: "devCluster"
+  aws_access_key_id: ""
+  aws_secret_access_key: ""
+  aws_debug: "false"
+
