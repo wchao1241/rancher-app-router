@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: alb-echoheaders
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    #alb.ingress.kubernetes.io/subnets: subnet-1234
+    #alb.ingress.kubernetes.io/security-groups: sg-1234
+    alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
+    kubernetes.io/ingress.class: "alb"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /xxx
+        backend:
+          serviceName: echoheaders-alb
+          servicePort: 80
+      - path: /yyy
+        backend:
+          serviceName: echoheaders-alb
+          servicePort: 80
