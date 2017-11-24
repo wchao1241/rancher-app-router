@@ -4,6 +4,7 @@ metadata:
   name: simplelb-without-hostname
   annotations:
     kubernetes.io/ingress.class: "nginx"
+    rdns.rancher.io/protocol: 'http'
 spec:
   rules:
   - host: simplelb-without-hostname.default.zzb88678.w.niusmallnan.com

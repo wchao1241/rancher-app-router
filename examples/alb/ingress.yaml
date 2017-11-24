@@ -8,6 +8,7 @@ metadata:
     #alb.ingress.kubernetes.io/security-groups: sg-1234
     alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
     kubernetes.io/ingress.class: "alb"
+    rdns.rancher.io/protocol: 'http'
 spec:
   rules:
   - http:
