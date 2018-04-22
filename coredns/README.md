@@ -45,3 +45,7 @@ For DNS to work properly SkyDNS needs to tell its parents its nameservers.
 etcdctl set /rdns/cloud/rancher/lb/dns/ns/ns1 '{"host":"ip1"}'
 etcdctl set /rdns/cloud/rancher/lb/dns/ns/ns2 '{"host":"ip2"}'
 ```
+
+### Backup data to S3
+
+Reference script A, and use crontab to perform, such as copy to `/etc/cron.daily/`
