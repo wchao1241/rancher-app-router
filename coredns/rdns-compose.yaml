@@ -2,7 +2,7 @@ version: '2'
 
 services:
   coredns:
-    image: niusmallnan/coredns:0.9.10-rancher
+    image: niusmallnan/coredns:v1.1.1-rancher
     network_mode: host
     volumes:
     - ./corefile:/etc/corefile
