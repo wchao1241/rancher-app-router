@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
       - name: kube-rdns
-        image: niusmallnan/kube-rdns:v0.1.0-alpha
+        image: niusmallnan/kube-rdns:dev
         imagePullPolicy: Always
         ports:
         - containerPort: 9595
@@ -37,9 +37,14 @@ spec:
             configMapKeyRef:
               name: kube-rdns
               key: rdns.renew_duration
+        - name: RANCHER_INGRESS_RESYNC_DURATION
+          valueFrom:
+            configMapKeyRef:
+              name: kube-rdns
+              key: rdns.ingress_resync_duration
         readinessProbe:
           httpGet:
-            path: /healthcheck
+            path: /healthz
             port: 9595
           initialDelaySeconds: 5
           timeoutSeconds: 1
