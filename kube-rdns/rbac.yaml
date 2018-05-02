@@ -27,6 +27,13 @@ rules:
       - list
       - watch
   - apiGroups:
+      - ""
+    resources:
+      - secrets
+    verbs:
+      - get
+      - update
+  - apiGroups:
       - "extensions"
     resources:
       - ingresses
@@ -34,15 +41,6 @@ rules:
       - get
       - list
       - update
-      - watch
-  - apiGroups:
-      - "extensions"
-      - "apps"
-    resources:
-      - deployments
-    verbs:
-      - get
-      - list
       - watch
 
 ---
