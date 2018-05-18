@@ -1,6 +1,6 @@
 # CoreDNS
 
-### How to use
+## How to use
 
 ```
 $ docker-compose -f ./etcd-compose.yaml up -d
@@ -53,6 +53,14 @@ For DNS to work properly SkyDNS needs to tell its parents its nameservers.
 ```
 etcdctl set /rdns/cloud/rancher/lb/dns/ns/ns1 '{"host":"ip1"}'
 etcdctl set /rdns/cloud/rancher/lb/dns/ns/ns2 '{"host":"ip2"}'
+```
+
+### Add cname record for API
+
+We should use `api.lb.rancher.cloud` as default API domain, add a CNAME record for ELB domain.
+
+```
+etcdctl set /rdns/cloud/rancher/lb/api '{"host":"rdns-server-lb-1538981444.us-west-1.elb.amazonaws.com"}'
 ```
 
 ## Backup and Restore
