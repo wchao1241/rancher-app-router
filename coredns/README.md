@@ -36,7 +36,6 @@ zhibo.test.rancher.local. 160	IN	A	2.2.2.2
 zhibo.test.rancher.local. 160	IN	A	1.1.1.1
 ```
 
-
 ### Add ns records
 
 For DNS to work properly SkyDNS needs to tell its parents its nameservers.
@@ -46,6 +45,26 @@ etcdctl set /rdns/cloud/rancher/lb/dns/ns/ns1 '{"host":"ip1"}'
 etcdctl set /rdns/cloud/rancher/lb/dns/ns/ns2 '{"host":"ip2"}'
 ```
 
+## Backup and Restore
+
+### Dependencies
+
+* etcdctl installed.
+
+* AWS S3 bucket.
+
+* AWS access and secret key with write permissions for this bucket.
+
 ### Backup data to S3
 
-Reference script A, and use crontab to perform, such as copy to `/etc/cron.daily/`
+1. Modify fields in `backup_etcd_s3.sh`, such as `s3-bucket`, `s3-region`, etc.
+
+2. Reference script `backup_etcd_s3.sh`, and use crontab to perform, such as copy to `/etc/cron.daily/`.
+
+### Restore data from S3
+
+1. Make public the backup files.
+
+2. In `restore_etcd.sh` script file,change the `BACKUP_V2_SUFFIX` and `BACKUP_V3_SUFFIX` fields according to the file you want to restore.
+
+3. Execute `restore_etcd.sh` script file.
