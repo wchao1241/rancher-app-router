@@ -45,6 +45,17 @@ etcdctl set /rdns/cloud/rancher/lb/dns/ns/ns1 '{"host":"ip1"}'
 etcdctl set /rdns/cloud/rancher/lb/dns/ns/ns2 '{"host":"ip2"}'
 ```
 
+## Air-gap setup
+
+Modify `rdns.base_url` field of configmap.yaml in kube-rdns,such as `http://servic_ip:9333/v1`
+
+Default Settings
+
+| Name | Value |
+| ----- | ---- |
+| &lt;port&gt; | 9333 |
+| &lt;version&gt; | v1 |
+
 ## Backup and Restore
 
 ### Dependencies
@@ -55,11 +66,19 @@ etcdctl set /rdns/cloud/rancher/lb/dns/ns/ns2 '{"host":"ip2"}'
 
 * AWS access and secret key with write permissions for this bucket.
 
+* Copy etcd-backup into /usr/local/bin
+```
+cp etcd-backup /usr/local/bin/etcd-backup
+```
+
 ### Backup data to S3
 
 1. Modify fields in `backup_etcd_s3.sh`, such as `s3-bucket`, `s3-region`, etc.
 
 2. Reference script `backup_etcd_s3.sh`, and use crontab to perform, such as copy to `/etc/cron.daily/`.
+```
+mv backup_etcd_s3.sh /etc/cron.daily/backup_etcd_s3
+```
 
 ### Restore data from S3
 
